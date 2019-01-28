@@ -96,6 +96,10 @@ class Pencere(QWidget):
         self.mesaj.setFont(QFont("Comic Sans MS",20))
         self.listem.setFont(QFont("Comic Sans MS",25))
         self.carpim_cevap.setFont(QFont("Comic Sans MS",25))
+        self.sıra_alan.setFont(QFont("Comic Sans MS",18))
+        self.sıra_göster.setFont(QFont("Comic Sans MS",18))
+        self.devam.setFont(QFont("Comic Sans MS",18))
+        self.cikalim.setFont(QFont("Comic Sans MS",18))
         
         
         self.mesaj.setAlignment(Qt.AlignCenter)
@@ -166,10 +170,13 @@ class Pencere(QWidget):
         self.isim.close()
         self.isimal.close()
         self.carpim_button.show() #isim girildikten sonra başlama butonu görünsün
+        self.sayac=0  
+        self.cikalim.show()
         return self.ismim
 
         
     def carpma(self):
+        self.carpimlar.show()
         self.a = random.randint(1, 10)
         self.b = random.randint(1, 10)
         self.c = self.a * self.b
@@ -177,6 +184,8 @@ class Pencere(QWidget):
         self.carpim_button.close() # yarışma başladıktan sonra buton tekrar kaybolsun
         self.carpim_cevap.show()
         self.cevap_ver.show()
+        self.mesaj.show()
+        self.sayac_say.show()
         self.logo.close()
         self.logo1.close()
         
@@ -224,6 +233,7 @@ class Pencere(QWidget):
             self.hosgeldiniz.setFont(QFont("Comic Sans MS",25))
             self.sıra_alan.show()
             self.sıra_göster.show()
+            self.devam.show()
 
     def sira_al(self):
         self.cikalim.show()
@@ -259,7 +269,25 @@ class Pencere(QWidget):
         self.media.play()    
     
     def pencere(self):
-         self.__init__()
+        self.isimal.show()
+        self.isim.show()
+        self.listem.close()
+        self.devam.close()
+        self.isim.clear()
+        #self.cikalim.close()
+        self.devam.close()
+        self.hosgeldiniz.show()
+        self.logo.show()
+        self.logo1.show()
+        self.z_sayac.show()
+        self.z_sayac.setText("Başladıktan sonra 60 saniye süren var")
+        self.sıra_göster.close()
+        self.mesaj.clear()
+        self.sıra_alan.close()
+        self.hosgeldiniz.setText("""Çarpım Tablosu Öğreten Programa Hoşgeldiniz\nÖnce isminizi giriniz""")
+        
+        
+         #self.__init__()
          
                  
  
@@ -267,13 +295,6 @@ class Pencere(QWidget):
         sys.exit() 
         
         
-        
-            
-
-            
-       
-                
-   
 if __name__ ==  "__main__":
     app=QApplication(sys.argv)
     pencere=Pencere()
